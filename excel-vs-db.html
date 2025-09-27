@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel vs. Datenbank - Datenbank Grundlagen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#059669'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glossary-term {
+            cursor: pointer;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .active-section {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .comparison-card {
+            transition: transform 0.2s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10 border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary mb-4 md:mb-0"><a href="index.html">Datenbank Grundlagen</a></h1>
+                <div class="flex space-x-1 overflow-x-auto py-2 w-full md:w-auto justify-center">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Einleitung</a>
+                    <a href="grundlagen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Anforderungen</a>
+                    <a href="excel-vs-db.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition active-section">Excel vs. DB</a>
+                    <a href="ebenenschema.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Drei-Ebenen-Schema</a>
+                    <a href="tabellenaufbau.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Tabellenaufbau</a>
+                    <a href="glossar.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Glossar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-sm p-8 mb-8 border">
+            <h2 class="text-3xl font-bold text-primary mb-6">Tabellenkalkulation vs. Datenbank</h2>
+            
+            <div class="prose max-w-none">
+                <p class="mb-6">Obwohl Tabellenkalkulationen wie Excel und Datenbanken beide mit tabellarischen Daten arbeiten, gibt es fundamentale Unterschiede in ihrem Aufbau, ihren Fähigkeiten und ihren Einsatzgebieten.</p>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Probleme bei Tabellenkalkulationen wie Excel</h3>
+                    <div class="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
+                        <ul class="list-disc pl-5 space-y-3">
+                            <li>
+                                <strong>Statische Struktur:</strong> Die Anzahl der Zellen ist fest vorgegeben und ändert sich nicht. 
+                                <span class="block text-sm text-gray-600 mt-1">Ein Rechenblatt ist statisch - sämtliche Zellen sind bereits bei der Erzeugung vorhanden.</span>
+                            </li>
+                            <li>
+                                <strong>Redundanzen:</strong> Daten müssen häufig mehrfach gespeichert werden.
+                                <span class="block text-sm text-gray-600 mt-1">Beispiel: Kundenadressen bei mehreren Bestellungen desselben Kunden.</span>
+                            </li>
+                            <li>
+                                <strong>Anomalien:</strong> Bei Änderungen können Inkonsistenzen entstehen (Update-, Delete-, Insert-Anomalien).
+                                <span class="block text-sm text-gray-600 mt-1">Ändert sich eine Adresse, muss sie an allen Stellen manuell aktualisiert werden.</span>
+                            </li>
+                            <li>
+                                <strong>Begrenzte Datenmenge:</strong> Große Datenmengen werden problematisch.
+                                <span class="block text-sm text-gray-600 mt-1">Excel hat Grenzen bei der Anzahl der Zeilen und der Performance.</span>
+                            </li>
+                            <li>
+                                <strong>Eingeschränkte Mehrbenutzerfähigkeit:</strong> Gleichzeitiger Zugriff ist schwierig.
+                                <span class="block text-sm text-gray-600 mt-1">Dateien müssen oft gesperrt werden, um Konflikte zu vermeiden.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Vorteile von Tabellenkalkulationen</h3>
+                    <div class="bg-green-50 p-5 rounded-lg border-l-4 border-green-500">
+                        <ul class="list-disc pl-5 space-y-3">
+                            <li>
+                                <strong>Einfache Berechnungen:</strong> Ideal für komplexe Rechnungen und Formeln.
+                                <span class="block text-sm text-gray-600 mt-1">Wie das Wort "Rechenblatt" schon nahelegt, ist es in erster Linie ein Hilfsmittel zur Durchführung komplexerer Rechnungen.</span>
+                            </li>
+                            <li>
+                                <strong>Flexible Darstellung:</strong> Daten können frei im Tabellenblatt angeordnet werden.
+                                <span class="block text-sm text-gray-600 mt-1">Die Anordnung der Zellen spielt keine Rolle, sofern die Bezüge korrekt sind.</span>
+                            </li>
+                            <li>
+                                <strong>Schnelle Visualisierung:</strong> Einfache Erstellung von Diagrammen und Grafiken.
+                                <span class="block text-sm text-gray-600 mt-1">Direkte Darstellung von Daten in verschiedenen Chart-Formaten.</span>
+                            </li>
+                            <li>
+                                <strong>Einfache Bedienung:</strong> Geringere Einarbeitungszeit im Vergleich zu Datenbanken.
+                                <span class="block text-sm text-gray-600 mt-1">Intuitive Oberfläche für Benutzer ohne technischen Hintergrund.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="comparison-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-file-excel"></i></div>
+                        <h3 class="font-bold text-lg mb-3 text-center">Einsatzbereiche für Tabellenkalkulation</h3>
+                        <ol class="list-decimal pl-5 space-y-3">
+                            <li>
+                                <strong>Budgetplanung und Finanzanalyse:</strong> 
+                                <span class="block text-sm text-gray-600 mt-1">Erstellung von Haushaltsplänen mit verschiedenen Szenarien und Was-wenn-Analysen.</span>
+                            </li>
+                            <li>
+                                <strong>Datenauswertung und -visualisierung:</strong> 
+                                <span class="block text-sm text-gray-600 mt-1">Erstellung von Diagrammen aus kleinen bis mittleren Datensätzen für Präsentationen.</span>
+                            </li>
+                            <li>
+                                <strong>Einfache Listenverwaltung:</strong> 
+                                <span class="block text-sm text-gray-600 mt-1">Verwaltung von Kontakten, Aufgaben oder Inventarlisten mit wenigen hundert Einträgen.</span>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="comparison-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-database"></i></div>
+                        <h3 class="font-bold text-lg mb-3 text-center">Einsatzbereiche für Datenbanken</h3>
+                        <ol class="list-decimal pl-5 space-y-3">
+                            <li>
+                                <strong>Kundenverwaltungssysteme:</strong> 
+                                <span class="block text-sm text-gray-600 mt-1">Verwaltung von Kundenstammdaten, Bestellungen und Rechnungen in Unternehmen.</span>
+                            </li>
+                            <li>
+                                <strong>Lagerverwaltung:</strong> 
+                                <span class="block text-sm text-gray-600 mt-1">Verwaltung von Artikeln, Beständen und Bewegungen in Unternehmen mit vielen Transaktionen.</span>
+                            </li>
+                            <li>
+                                <strong>Mehrbenutzer-Anwendungen:</strong> 
+                                <span class="block text-sm text-gray-600 mt-1">Systeme, bei denen mehrere Benutzer gleichzeitig auf dieselben Daten zugreifen müssen.</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-primary mb-8">
+                    <h3 class="font-bold text-lg mb-3">Beispiel aus den Materialien:</h3>
+                    <p>Die Firma Klender schreibt Rechnungen bisher mit einem Textverarbeitungsprogramm und überträgt Daten manuell aus Excel. Dies ist umständlich und zeitaufwändig. Absatz- und Umsatzstatistiken sind nur sehr umständlich zu erstellen. Eine Datenbanklösung würde hier Abhilfe schaffen durch:</p>
+                    <ul class="list-disc pl-5 mt-3 space-y-1">
+                        <li>Automatisierte Rechnungserstellung</li>
+                        <li>Einfachere Auswertungen und Statistiken</li>
+                        <li>Vermeidung von Redundanzen bei Kunden- und Artikeldaten</li>
+                        <li>Gleichzeitiger Zugriff mehrerer Mitarbeiter</li>
+                    </ul>
+                </div>
+                
+                <div class="flex justify-between mt-12">
+                    <a href="anforderungen.html" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span>Zurück zu Anforderungen</span>
+                    </a>
+                    <a href="ebenenschema.html" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition flex items-center">
+                        <span>Weiter zum Drei-Ebenen-Schema</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-semibold">Datenbank Grundlagen</p>
+                    <p class="text-gray-400">Lernwebsite für den Wirtschaftsinformatik LK-Kurs</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Einleitung</a>
+                    <a href="grundlagen.html" class="text-gray-400 hover:text-white transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="text-gray-400 hover:text-white transition">Anforderungen</a>
+                    <a href="glossar.html" class="text-gray-400 hover:text-white transition">Glossar</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>Erstellt mit Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Aktiven Navigationslink hervorheben
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active-section');
+                } else {
+                    link.classList.remove('active-section');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
