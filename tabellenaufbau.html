@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabellenaufbau - Datenbank Grundlagen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#059669'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glossary-term {
+            cursor: pointer;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .active-section {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .table-highlight {
+            transition: all 0.2s ease;
+        }
+        .table-highlight:hover {
+            background-color: #f0f9ff;
+        }
+        .attribute-highlight:hover {
+            background-color: #f0fdf4;
+        }
+        .value-highlight:hover {
+            background-color: #fef7cd;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10 border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary mb-4 md:mb-0"><a href="index.html">Datenbank Grundlagen</a></h1>
+                <div class="flex space-x-1 overflow-x-auto py-2 w-full md:w-auto justify-center">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Einleitung</a>
+                    <a href="grundlagen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Anforderungen</a>
+                    <a href="excel-vs-db.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Excel vs. DB</a>
+                    <a href="ebenenschema.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Drei-Ebenen-Schema</a>
+                    <a href="tabellenaufbau.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition active-section">Tabellenaufbau</a>
+                    <a href="glossar.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Glossar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-sm p-8 mb-8 border">
+            <h2 class="text-3xl font-bold text-primary mb-6">Aufbau von Datenbanktabellen</h2>
+            
+            <div class="prose max-w-none">
+                <p class="mb-6">Eine Datenbanktabelle ist die grundlegende Struktur zur Speicherung von Daten in einem relationalen Datenbanksystem. Sie ähnelt einer Tabelle in Excel, folgt jedoch strengeren Regeln und Konventionen.</p>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Beispieltabelle: Kunden</h3>
+                    
+                    <div class="overflow-x-auto mb-6 border rounded-lg">
+                        <table class="min-w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="border p-3 text-left attribute-highlight" title="Attribut: Kundennummer">Kundennummer</th>
+                                    <th class="border p-3 text-left attribute-highlight" title="Attribut: Vorname">Vorname</th>
+                                    <th class="border p-3 text-left attribute-highlight" title="Attribut: Nachname">Nachname</th>
+                                    <th class="border p-3 text-left attribute-highlight" title="Attribut: Straße">Straße</th>
+                                    <th class="border p-3 text-left attribute-highlight" title="Attribut: PLZ">PLZ</th>
+                                    <th class="border p-3 text-left attribute-highlight" title="Attribut: Ort">Ort</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-highlight">
+                                    <td class="border p-3 value-highlight" title="Attributwert: 1010">1010</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Hans">Hans</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Herten">Herten</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Kampstraße 10">Kampstraße 10</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: 50667">50667</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Köln">Köln</td>
+                                </tr>
+                                <tr class="table-highlight bg-gray-50">
+                                    <td class="border p-3 value-highlight" title="Attributwert: 1011">1011</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Margit">Margit</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Engels">Engels</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Hauptstraße 4-6">Hauptstraße 4-6</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: 50672">50672</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Köln">Köln</td>
+                                </tr>
+                                <tr class="table-highlight">
+                                    <td class="border p-3 value-highlight" title="Attributwert: 1012">1012</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Josef">Josef</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Herpers">Herpers</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Moselweg 1a">Moselweg 1a</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: 50226">50226</td>
+                                    <td class="border p-3 value-highlight" title="Attributwert: Frechen">Frechen</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 mb-6"><strong>Tipp:</strong> Fahren Sie mit der Maus über die Tabellenelemente, um deren Bedeutung hervorzuheben.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Wichtige Begriffe:</h3>
+                        <ul class="list-disc pl-5 space-y-3">
+                            <li>
+                                <strong><span class="glossary-term" data-term="Attribut">Attribut</span>:</strong> 
+                                Eine Eigenschaft oder Merkmal einer Entität (z.B. Kundennummer, Vorname, Nachname). 
+                                <span class="block text-sm text-gray-600 mt-1">In der Tabelle sind dies die Spaltenüberschriften.</span>
+                            </li>
+                            <li>
+                                <strong><span class="glossary-term" data-term="Attributwert">Attributwert</span>:</strong> 
+                                Der konkrete Wert eines Attributes in einem Datensatz (z.B. "1010" für Kundennummer).
+                                <span class="block text-sm text-gray-600 mt-1">In der Tabelle sind dies die Zelleninhalte.</span>
+                            </li>
+                            <li>
+                                <strong><span class="glossary-term" data-term="Tupel">Tupel</span> / <span class="glossary-term" data-term="Datensatz">Datensatz</span>:</strong> 
+                                Eine vollständige Zeile der Tabelle mit allen Attributwerten.
+                                <span class="block text-sm text-gray-600 mt-1">Jede Zeile repräsentiert einen konkreten Datensatz.</span>
+                            </li>
+                            <li>
+                                <strong><span class="glossary-term" data-term="Primärschlüssel">Primärschlüssel</span>:</strong> 
+                                Ein eindeutiges Attribut, das jeden Datensatz identifiziert (z.B. Kundennummer).
+                                <span class="block text-sm text-gray-600 mt-1">Darf in der Tabelle nicht doppelt vorkommen.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-5 rounded-lg border">
+                        <h3 class="font-bold text-lg mb-3">Struktur einer Datenbanktabelle:</h3>
+                        <p>Eine Datenbanktabelle besteht aus:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li><strong>Spalten:</strong> Attribute (Eigenschaften)</li>
+                            <li><strong>Zeilen:</strong> Tupel/Datensätze (konkrete Einträge)</li>
+                            <li><strong>Zellen:</strong> Attributwerte (konkrete Werte)</li>
+                        </ul>
+                        <p class="mt-4">Jedes Tupel muss sich von allen anderen unterscheiden, was durch den Primärschlüssel gewährleistet wird.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-blue-50 p-5 rounded-lg border-l-4 border-primary">
+                    <h3 class="font-bold text-lg mb-3">Wichtige Eigenschaften von Datenbanktabellen:</h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Jede Spalte hat einen eindeutigen Namen und einen festgelegten Datentyp</li>
+                        <li>Die Reihenfolge der Zeilen ist nicht festgelegt</li>
+                        <li>Es gibt keine doppelten Zeilen (dank Primärschlüssel)</li>
+                        <li>Jede Zelle enthält genau einen Wert (atomare Werte)</li>
+                    </ul>
+                </div>
+                
+                <div class="flex justify-between mt-12">
+                    <a href="ebenenschema.html" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span>Zurück zum Drei-Ebenen-Schema</span>
+                    </a>
+                    <a href="glossar.html" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition flex items-center">
+                        <span>Weiter zum Glossar</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-semibold">Datenbank Grundlagen</p>
+                    <p class="text-gray-400">Lernwebsite für den Wirtschaftsinformatik LK-Kurs</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Einleitung</a>
+                    <a href="grundlagen.html" class="text-gray-400 hover:text-white transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="text-gray-400 hover:text-white transition">Anforderungen</a>
+                    <a href="glossar.html" class="text-gray-400 hover:text-white transition">Glossar</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>Erstellt mit Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Aktiven Navigationslink hervorheben
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active-section');
+                } else {
+                    link.classList.remove('active-section');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const glossaryTerms = document.querySelectorAll('.glossary-term');
+            glossaryTerms.forEach(term => {
+                term.addEventListener('click', function() {
+                    const termName = this.getAttribute('data-term');
+                    // Zur Glossar-Seite navigieren mit dem Suchbegriff
+                    window.location.href = `glossar.html?search=${encodeURIComponent(termName)}`;
+                });
+                
+                // Hover-Effekt für bessere UX
+                term.style.cursor = 'pointer';
+                term.title = `Klicken für Definition von "${term.getAttribute('data-term')}"`;
+            });
+        });
+    </script>
+</body>
+</html>

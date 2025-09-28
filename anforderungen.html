@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anforderungen - Datenbank Grundlagen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#059669'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glossary-term {
+            cursor: pointer;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .active-section {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .requirement-card {
+            transition: transform 0.2s ease;
+        }
+        .requirement-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10 border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary mb-4 md:mb-0"><a href="index.html">Datenbank Grundlagen</a></h1>
+                <div class="flex space-x-1 overflow-x-auto py-2 w-full md:w-auto justify-center">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Einleitung</a>
+                    <a href="grundlagen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition active-section">Anforderungen</a>
+                    <a href="excel-vs-db.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Excel vs. DB</a>
+                    <a href="ebenenschema.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Drei-Ebenen-Schema</a>
+                    <a href="tabellenaufbau.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Tabellenaufbau</a>
+                    <a href="glossar.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Glossar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-sm p-8 mb-8 border">
+            <h2 class="text-3xl font-bold text-primary mb-6">Anforderungen an Datenbanksysteme</h2>
+            
+            <div class="prose max-w-none">
+                <p class="mb-6">Datenbanksysteme müssen verschiedene Anforderungen erfüllen, um effektiv und sicher arbeiten zu können. Diese Anforderungen leiten sich aus den Bedürfnissen der Nutzer und den technischen Gegebenheiten ab.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Datenunabhängigkeit</h3>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li><strong>Unabhängigkeit vom Anwendungsprogramm:</strong> Daten sind anwendungsneutral gespeichert</li>
+                            <li><strong>Logische Unabhängigkeit:</strong> Benutzer müssen nur Datenstrukturen kennen</li>
+                            <li><strong>Physische Unabhängigkeit:</strong> DBMS steuert Speicherung und Zugriff</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-user-friends"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Benutzerfreundlichkeit</h3>
+                        <p class="text-sm">Leicht zu erlernende Benutzersprachen und grafische Oberflächen für verschiedene Nutzergruppen.</p>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-users"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Mehrfachzugriff</h3>
+                        <p class="text-sm">Autorisierte Benutzer können im Mehrbenutzerbetrieb gleichzeitig auf Daten zugreifen.</p>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-sync-alt"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Flexibilität</h3>
+                        <p class="text-sm">Daten müssen in beliebiger Form verknüpfbar sein und verschiedene Zugriffsarten ermöglichen.</p>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-bolt"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Effizienz</h3>
+                        <p class="text-sm">Kurze Antwortzeiten für Abfragen, Änderungen und Ergänzungen des Datenbestands.</p>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-lock"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Datenschutz</h3>
+                        <ul class="list-disc pl-5 text-sm space-y-1">
+                            <li>Schutz vor unbefugtem Zugriff</li>
+                            <li>Zugriffsberechtigungen verwalten</li>
+                            <li>Authentifizierung und Autorisierung</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-database"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Datensicherheit</h3>
+                        <p class="text-sm">Daten müssen gegen Programmfehler und Hardwareausfälle gesichert sein. Wiederherstellung nach Störungen (Recovery).</p>
+                    </div>
+                    
+                    <div class="requirement-card bg-white border rounded-lg p-5 shadow-sm">
+                        <div class="text-primary text-2xl mb-3"><i class="fas fa-check-double"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Datenintegrität</h3>
+                        <p class="text-sm">Daten müssen vollständig, korrekt und widerspruchsfrei sein (referenzielle Integrität).</p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-primary mb-8">
+                    <h3 class="font-bold text-lg mb-3">Zusammenfassung der wichtigsten Anforderungen:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Datenunabhängigkeit:</strong> Trennung von Anwendungen und Daten</li>
+                            <li><strong>Integrität:</strong> Korrektheit und Konsistenz der Daten</li>
+                            <li><strong>Sicherheit:</strong> Schutz vor unbefugtem Zugriff</li>
+                            <li><strong>Nebenläufigkeit:</strong> Mehrbenutzerbetrieb</li>
+                        </ul>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Performance:</strong> Schnelle Antwortzeiten</li>
+                            <li><strong>Verfügbarkeit:</strong> Zuverlässiger Betrieb</li>
+                            <li><strong>Skalierbarkeit:</strong> Anpassung an wachsende Datenmengen</li>
+                            <li><strong>Benutzerfreundlichkeit:</strong> Einfache Bedienung</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-12">
+                    <a href="grundlagen.html" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span>Zurück zu Grundlagen</span>
+                    </a>
+                    <a href="excel-vs-db.html" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition flex items-center">
+                        <span>Weiter zu Excel vs. Datenbank</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-semibold">Datenbank Grundlagen</p>
+                    <p class="text-gray-400">Lernwebsite für den Wirtschaftsinformatik LK-Kurs</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Einleitung</a>
+                    <a href="grundlagen.html" class="text-gray-400 hover:text-white transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="text-gray-400 hover:text-white transition">Anforderungen</a>
+                    <a href="glossar.html" class="text-gray-400 hover:text-white transition">Glossar</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>Erstellt mit Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Aktiven Navigationslink hervorheben
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active-section');
+                } else {
+                    link.classList.remove('active-section');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const glossaryTerms = document.querySelectorAll('.glossary-term');
+            glossaryTerms.forEach(term => {
+                term.addEventListener('click', function() {
+                    const termName = this.getAttribute('data-term');
+                    // Zur Glossar-Seite navigieren mit dem Suchbegriff
+                    window.location.href = `glossar.html?search=${encodeURIComponent(termName)}`;
+                });
+                
+                // Hover-Effekt für bessere UX
+                term.style.cursor = 'pointer';
+                term.title = `Klicken für Definition von "${term.getAttribute('data-term')}"`;
+            });
+        });
+    </script>
+</body>
+</html>

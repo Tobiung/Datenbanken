@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossar - Datenbank Grundlagen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#059669'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glossary-term {
+            cursor: pointer;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .active-section {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .term-card {
+            transition: transform 0.2s ease;
+        }
+        .term-card:hover {
+            transform: translateY(-3px);
+        }
+        .highlight {
+            background-color: #fef7cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10 border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-2xl font-bold text-primary mb-4 md:mb-0"><a href="index.html">Datenbank Grundlagen</a></h1>
+                <div class="flex space-x-1 overflow-x-auto py-2 w-full md:w-auto justify-center">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Einleitung</a>
+                    <a href="grundlagen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Anforderungen</a>
+                    <a href="excel-vs-db.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Excel vs. DB</a>
+                    <a href="ebenenschema.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Drei-Ebenen-Schema</a>
+                    <a href="tabellenaufbau.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">Tabellenaufbau</a>
+                    <a href="glossar.html" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition active-section">Glossar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-sm p-8 mb-8 border">
+            <h2 class="text-3xl font-bold text-primary mb-6">Glossar - Datenbankbegriffe</h2>
+            
+            <div class="prose max-w-none">
+                <p class="mb-6">In diesem Glossar finden Sie Erklärungen zu den wichtigsten Begriffen aus dem Bereich der Datenbanken. Klicken Sie auf einen Begriff, um direkt zur entsprechenden Erklärung zu springen.</p>
+                
+                <div class="mb-6">
+                    <div class="flex items-center mb-4">
+                        <input type="text" id="glossary-search" placeholder="Begriff suchen..." class="w-full p-3 border border-gray-300 rounded-lg">
+                        <button id="search-btn" class="ml-2 bg-primary text-white p-3 rounded-lg hover:bg-secondary transition">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button class="filter-btn bg-primary text-white px-3 py-1 rounded-full text-sm hover:bg-secondary transition" data-filter="all">Alle</button>
+                        <button class="filter-btn bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-300 transition" data-filter="grundbegriffe">Grundbegriffe</button>
+                        <button class="filter-btn bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-300 transition" data-filter="tabellen">Tabellen</button>
+                        <button class="filter-btn bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-300 transition" data-filter="anforderungen">Anforderungen</button>
+                    </div>
+                </div>
+                
+                <div id="glossary-list" class="space-y-6">
+                    <!-- Glossareinträge werden hier eingefügt -->
+                </div>
+                
+                <div class="flex justify-start mt-12">
+                    <a href="tabellenaufbau.html" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span>Zurück zum Tabellenaufbau</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-semibold">Datenbank Grundlagen</p>
+                    <p class="text-gray-400">Lernwebsite für den Wirtschaftsinformatik LK-Kurs</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Einleitung</a>
+                    <a href="grundlagen.html" class="text-gray-400 hover:text-white transition">Grundlagen</a>
+                    <a href="anforderungen.html" class="text-gray-400 hover:text-white transition">Anforderungen</a>
+                    <a href="glossar.html" class="text-gray-400 hover:text-white transition">Glossar</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>Erstellt mit Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Glossar-Daten
+        const glossaryData = [
+            { 
+                term: "Datenbank", 
+                definition: "Eine systematische und zweckgerichtete Sammlung von Daten. Aus dem Verwendungszweck ergibt sich, welche Daten gesammelt und gespeichert werden.",
+                category: "grundbegriffe"
+            },
+            { 
+                term: "Datenbanksystem", 
+                definition: "Die Kombination aus einer Datenbank und einem Datenbankmanagementsystem. Es umfasst also sowohl die Daten selbst als auch die Software zu deren Verwaltung.",
+                category: "grundbegriffe"
+            },
+            { 
+                term: "Datenbankmanagementsystem (DBMS)", 
+                definition: "Software zur Verwaltung von Daten in einer Datenbank. Das DBMS stellt Methoden zur Verfügung, mit denen Nutzer auf die gespeicherten Daten zugreifen können.",
+                category: "grundbegriffe"
+            },
+            { 
+                term: "Attribut", 
+                definition: "Eine Eigenschaft oder Merkmal einer Entität in einer Datenbanktabelle (z.B. Kundennummer, Vorname, Nachname). In der Tabelle sind dies die Spaltenüberschriften.",
+                category: "tabellen"
+            },
+            { 
+                term: "Attributwert", 
+                definition: "Der konkrete Wert eines Attributes in einem Datensatz (z.B. '1010' für Kundennummer). In der Tabelle sind dies die Zelleninhalte.",
+                category: "tabellen"
+            },
+            { 
+                term: "Tupel", 
+                definition: "Eine vollständige Zeile in einer Datenbanktabelle; auch Datensatz genannt. Jede Zeile repräsentiert einen konkreten Datensatz.",
+                category: "tabellen"
+            },
+            { 
+                term: "Datensatz", 
+                definition: "Eine vollständige Zeile in einer Datenbanktabelle; auch Tupel genannt. Enthält alle Attributwerte für eine Entität.",
+                category: "tabellen"
+            },
+            { 
+                term: "Primärschlüssel", 
+                definition: "Ein eindeutiges Attribut, das jeden Datensatz in einer Tabelle identifiziert (z.B. Kundennummer). Darf in der Tabelle nicht doppelt vorkommen.",
+                category: "tabellen"
+            },
+            { 
+                term: "Redundanz", 
+                definition: "Die überflüssige Mehrfachspeicherung von Daten. Kann zu Inkonsistenzen führen und Speicherplatz verschwenden.",
+                category: "anforderungen"
+            },
+            { 
+                term: "Konsistenz", 
+                definition: "Die Widerspruchsfreiheit innerhalb einer Datenbank. Daten müssen vollständig, korrekt und widerspruchsfrei sein.",
+                category: "anforderungen"
+            },
+            { 
+                term: "Anomalie", 
+                definition: "Probleme, die bei der Bearbeitung redundanter Daten auftreten können. Man unterscheidet zwischen Update-, Delete- und Insert-Anomalien.",
+                category: "anforderungen"
+            },
+            { 
+                term: "Datenunabhängigkeit", 
+                definition: "Die Trennung von Anwendungen und Daten. Änderungen auf einer Ebene (z.B. physische Speicherung) beeinflussen andere Ebenen nicht.",
+                category: "anforderungen"
+            },
+            { 
+                term: "DBMS", 
+                definition: "Abkürzung für Datenbankmanagementsystem.",
+                category: "grundbegriffe"
+            },
+            { 
+                term: "DBS", 
+                definition: "Abkürzung für Datenbanksystem.",
+                category: "grundbegriffe"
+            },
+            { 
+                term: "SQL", 
+                definition: "Structured Query Language - Eine standardisierte Sprache zur Abfrage und Verwaltung von Datenbanken.",
+                category: "grundbegriffe"
+            },
+            { 
+                term: "Relation", 
+                definition: "Eine Tabelle in einer relationalen Datenbank. Besteht aus Zeilen (Tupeln) und Spalten (Attributen).",
+                category: "tabellen"
+            },
+            { 
+                term: "Datenschutz", 
+                definition: "Schutz personenbezogener Daten vor unbefugtem Zugriff. Umfasst Maßnahmen zur Zugriffskontrolle und Datensicherheit.",
+                category: "anforderungen"
+            },
+            { 
+                term: "Datensicherheit", 
+                definition: "Schutz der Daten vor Verlust, Beschädigung oder unbefugtem Zugriff. Umfasst Backup- und Recovery-Mechanismen.",
+                category: "anforderungen"
+            }
+        ];
+
+        // Glossar initialisieren
+        function initializeGlossary() {
+            const glossaryList = document.getElementById('glossary-list');
+            const searchInput = document.getElementById('glossary-search');
+            const searchBtn = document.getElementById('search-btn');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            let currentFilter = 'all';
+            
+            // Glossareinträge hinzufügen
+            function renderGlossary(terms) {
+                glossaryList.innerHTML = '';
+                
+                if (terms.length === 0) {
+                    glossaryList.innerHTML = `
+                        <div class="text-center py-8">
+                            <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">Keine Begriffe gefunden. Versuchen Sie einen anderen Suchbegriff.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                terms.forEach(item => {
+                    const entry = document.createElement('div');
+                    entry.className = 'term-card bg-white border rounded-lg p-5 shadow-sm';
+                    entry.id = `term-${item.term.replace(/\s+/g, '-').toLowerCase()}`;
+                    
+                    // Suchbegriff im Text hervorheben
+                    let definition = item.definition;
+                    const searchTerm = searchInput.value.toLowerCase();
+                    if (searchTerm) {
+                        const regex = new RegExp(`(${searchTerm})`, 'gi');
+                        definition = definition.replace(regex, '<span class="highlight">$1</span>');
+                    }
+                    
+                    entry.innerHTML = `
+                        <h3 class="font-bold text-xl text-primary mb-2">${item.term}</h3>
+                        <p class="text-gray-700">${definition}</p>
+                        <div class="mt-2">
+                            <span class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">${item.category}</span>
+                        </div>
+                    `;
+                    glossaryList.appendChild(entry);
+                });
+            }
+            
+            // Initial rendern
+            renderGlossary(glossaryData);
+            
+            // Suchfunktion
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let filteredTerms = glossaryData;
+                
+                // Nach Suchbegriff filtern
+                if (searchTerm) {
+                    filteredTerms = glossaryData.filter(item => 
+                        item.term.toLowerCase().includes(searchTerm) || 
+                        item.definition.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                // Nach Kategorie filtern
+                if (currentFilter !== 'all') {
+                    filteredTerms = filteredTerms.filter(item => item.category === currentFilter);
+                }
+                
+                renderGlossary(filteredTerms);
+                
+                // Zum ersten Ergebnis scrollen, wenn Suchbegriff vorhanden
+                if (searchTerm && filteredTerms.length > 0) {
+                    const firstResult = document.getElementById(`term-${filteredTerms[0].term.replace(/\s+/g, '-').toLowerCase()}`);
+                    if (firstResult) {
+                        firstResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+
+            // URL-Parameter für direkte Suche verarbeiten
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchParam = urlParams.get('search');
+            if (searchParam) {
+                searchInput.value = searchParam;
+                // Automatisch die Suche ausführen
+                performSearch();
+            }
+            
+            searchInput.addEventListener('input', performSearch);
+            searchBtn.addEventListener('click', performSearch);
+            
+            // Enter-Taste in Suchfeld unterstützen
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Filterfunktion
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentFilter = this.getAttribute('data-filter');
+                    
+                    // Aktiven Filter hervorheben
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-primary', 'text-white');
+                        b.classList.add('bg-gray-200', 'text-gray-800');
+                    });
+                    this.classList.remove('bg-gray-200', 'text-gray-800');
+                    this.classList.add('bg-primary', 'text-white');
+                    
+                    performSearch();
+                });
+            });
+        }
+
+        // Aktiven Navigationslink hervorheben
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active-section');
+                } else {
+                    link.classList.remove('active-section');
+                }
+            });
+            
+            initializeGlossary();
+        });
+    </script>
+</body>
+</html>
